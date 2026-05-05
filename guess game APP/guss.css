@@ -1,0 +1,183 @@
+:root {
+  --primary-color: #2c3e50;
+  --in-place: #2ecc71; /* Green */
+  --not-in-place: #f1c40f; /* Yellow */
+  --not-correct: #34495e; /* Dark Gray */
+  --bg-color: #ecf0f1;
+  --text-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+h1 {
+  margin: 30px 0 20px 0;
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.guess-game {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 40px;
+  max-width: 900px;
+  width: 95%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inputs > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputs > div span {
+  width: 60px;
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.inputs > div input {
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  outline: none;
+  background-color: #fff;
+  caret-color: transparent; /* إخفاء مؤشر الكتابة لتجربة أفضل */
+}
+
+.try input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px rgba(44, 62, 80, 0.3);
+}
+
+.disabled-inputs input {
+  background-color: #f9f9f9;
+  pointer-events: none;
+  border-color: #eee;
+  color: #7f8c8d;
+}
+
+/* Animation & Colors */
+input.in-place,
+input.not-in-place,
+input.not-correct {
+  color: white;
+  animation: flip 0.6s ease forwards;
+}
+
+input.in-place {
+  background-color: var(--in-place) !important;
+  border-color: var(--in-place) !important;
+}
+input.not-in-place {
+  background-color: var(--not-in-place) !important;
+  border-color: var(--not-in-place) !important;
+}
+input.not-correct {
+  background-color: var(--not-correct) !important;
+  border-color: var(--not-correct) !important;
+}
+
+@keyframes flip {
+  0% { transform: rotateX(0); }
+  50% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0); }
+}
+
+.control {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.control button {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: white;
+}
+
+.check { background-color: #3498db; flex: 1; }
+.check:hover { background-color: #2980b9; }
+
+.hint { background-color: #e67e22; display: flex; align-items: center; gap: 8px; }
+.hint:hover { background-color: #d35400; }
+.hint span { background: white; color: #e67e22; padding: 2px 8px; border-radius: 50%; font-size: 14px; }
+
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.message {
+  min-height: 24px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.message.error { color: #e74c3c; }
+.message.success { color: #2ecc71; }
+
+.key-area {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: fit-content;
+}
+.key-area h2 { font-size: 1.3rem; color: var(--primary-color); border-bottom: 2px solid #ddd; padding-bottom: 8px; }
+.key-color { display: flex; align-items: center; gap: 12px; }
+.key { width: 30px; height: 30px; border-radius: 50%; }
+.key.in-place { background-color: var(--in-place); }
+.key.not-in-place { background-color: var(--not-in-place); }
+.key.not-correct { background-color: var(--not-correct); }
+.key-text { font-size: 15px; color: #444; font-weight: 500;}
+
+footer { margin-top: auto; padding: 20px; color: #7f8c8d; font-weight: bold; }
